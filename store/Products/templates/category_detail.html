@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ category.category_name }}</h2>
+  <p>Название: {{ category.category_name }}</p>
+  <p>Описание: {{ category.category_description }}</p>
+  <a href="{% url 'update_category' pk=category.pk %}">Изменить</a>
+  <a href="{% url 'category_delete' pk=category.pk %}">Удалить</a>
+  <a href="{% url 'category_list' %}">Вернуться</a>
+{% endblock %}

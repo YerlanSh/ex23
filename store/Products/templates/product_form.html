@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Изменить продукт{% else %}Добавить новый продукт{% endif %}</h2>
+  <form method="post" action="{% if form.instance.pk %}{% url 'product_update' pk=form.instance.pk %}{% else %}{% url 'product_create' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Изменить продукт{% else %}Добавить новый продукт{% endif %}</button>
+  </form>
+  <a href="{% url 'product_list' %}">Вернуться</a>
+{% endblock %}

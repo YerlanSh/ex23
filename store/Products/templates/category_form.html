@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Изменить категорию{% else %}Добавить новую категорию{% endif %}</h2>
+  <form method="post" action="{% if form.instance.pk %}{% url 'update_category' pk=form.instance.pk %}{% else %}{% url 'category_create' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Изменить категорию{% else %}Добавить новую категорию{% endif %}</button>
+  </form>
+  <a href="{% url 'product_list' %}">Вернуться</a>
+{% endblock %}
